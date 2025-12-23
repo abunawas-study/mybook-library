@@ -1,16 +1,16 @@
-# React + Vite
+📚 MyBookShelf – Project Overview
+MyBookShelf is a modern React web app to save people from the hassle of finding, buying, and managing their personal library. It uses the Open Library API to fetch live book data, and comes with an AI Recommendation Assistant that makes discovery personalized.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🚀 Key Features
+Dynamic Book Search: Using the Open Library API, you can search for books by title, author or keywords.
+Detailed Insights: You can get full book details including book description, ISBN, number of pages and genres.
+Personalized Favorites : Add books to your own collection saved locally for quick access.
+AI Recommendation Assistant: A conversational interface that recommends books based on interests and themes described by the user.
+Responsive Design A Fully Mobile Responsive Interface Built With Tailwind Css.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+🛠️ Tech Stack
+Frontend : React (Vite)
+Styling : Tailwind CSS
+State Management : React Hooks (useState, useEffect) and Local Storage
+API : Open Library API
+AI Integration : External AI API (e.g., Google Gemini or OpenAI) 
