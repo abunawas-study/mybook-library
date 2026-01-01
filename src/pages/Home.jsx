@@ -1,12 +1,18 @@
-import React from 'react'
-import SearchBar from '../components/layout/SearchBar.jsx';
+import React from "react";
+import SearchBar from "../components/layout/SearchBar.jsx";
+import BookCard from "../components/books/BookCard.jsx";
 
 const Home = () => {
   return (
     <div>
-      <SearchBar />
+      <div>
+        <SearchBar />
+      </div>
+      <div>
+        <BookCard />
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
