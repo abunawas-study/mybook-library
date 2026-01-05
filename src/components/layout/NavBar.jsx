@@ -1,6 +1,5 @@
 import {Link} from 'react-router-dom';
 import React from 'react';
-
 import { Home, Heart, Sparkles } from 'lucide-react'; // Using lucide-react for icons
 
 const Navbar = () => {
