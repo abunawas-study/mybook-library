@@ -31,3 +31,4 @@ const BookCard = ({title, author, description, coverUrl}) =>{
         </div>
     );
 };
+export default BookCard;
