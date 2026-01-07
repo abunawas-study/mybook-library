@@ -1,19 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Search } from 'lucide-react';
-
+import { Search } from 'lucide-react'; 
 const SearchBar = ({ value, onSearch, onChange }) => {
-    // 1. Logic for debounced search
-    useEffect(() => {
-        // Only run debounce if there is a value
-        if (!value) return;
-
-        const delayDebounce = setTimeout(() => {
-            onSearch(value);
-        }, 500);
-
-        // Cleanup function to reset timer if user keeps typing
-        return () => clearTimeout(delayDebounce);
-    }, [value, onSearch]); // 2. Add proper dependencies
+  useEffect(() => {
+    if (!value || value.trim().length < 3) return;
+    const delayDebounce = setTimeout(() => {
+        onSearch(value);
+    }, 800);
+    return () => clearTimeout(delayDebounce);
+}, [value, onSearch]);
 
     return (
         <div className="max-w-2xl mx-auto mb-16 px-4">

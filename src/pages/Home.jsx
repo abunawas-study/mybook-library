@@ -9,11 +9,12 @@ const Home = () => {
   const [query, setQuery] = useState("");
   const { books, loading, error, fetchBooks } = useFetchBooks();
 
-  const handleSearch = () => {
-    if (query.trim()) {
-      fetchBooks(query);
+  const handleSearch = useCallback((searchTerm) => {
+    const searchVal = searchTerm || query;
+    if (searchVal.trim().length > 2) { // Guard: Don't search for only 1 or 2 letters
+      fetchBooks(searchVal);
     }
-  };
+  }, [query, fetchBooks]); 
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -27,11 +28,8 @@ const Home = () => {
         </div>
 
         {/* 2. Search Bar Component */}
-        <SearchBar 
-          value={query} 
-          onChange={setQuery} 
-          onSearch={handleSearch} 
-        />
+    <SearchBar value={query} onChange={setQuery} onSearch={handleSearch} />
+       
 
         {/* 3. Conditional Rendering: Handing the API states */}
         {loading && (

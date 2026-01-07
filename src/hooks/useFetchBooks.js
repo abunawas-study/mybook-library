@@ -1,34 +1,40 @@
 import { useState } from "react";
-import {SearchBooks} from "../utils/api";
+import { SearchBooks } from "../utils/api";
 
-export const userFetchBooks = () =>{
+// Changed name to 'useFetchBooks' (standard React naming)
+export const useFetchBooks = () => {
     const [books, setBooks] = useState([]);
-    const [Loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(false); // Lowercase 'l' for consistency
     const [error, setError] = useState(null);
 
-    const fetchBooks = async (query, type = 'title') =>{
-        // Reset state before new fetch
-        setLoading(true);
-        setError(null);
-
-        try{
+    const fetchBooks = async (query, type = 'title') => {
+        try {
+            setLoading(true);
+            setError(null);
+            
             const data = await SearchBooks(query, type);
-            // Handle cases where no results are found
-            if(!result || result.length === 0){
+            
+            // FIX: Check 'data' (the variable you actually created)
+            // Open Library returns results in a 'docs' array
+            const resultsArray = data.docs || data; 
+
+            if (!resultsArray || resultsArray.length === 0) {
                 setError('No books found for your search');
                 setBooks([]);
+            } else {
+                setBooks(resultsArray);
             }
-            else{
-            setBooks(result);
-           }
         } 
-        catch (error){
-        setError('Something went wrong with your network');
+        catch (error) {
+            console.error("Fetch error:", error);
+            setError('Something went wrong with your network');
         }
-        finally{
-        setLoading(false);
-       }
-   };
-    return {books, Loading, error, fetchBooks};
+        finally {
+            setLoading(false);
+        }
+    };
+
+    return { books, loading, error, fetchBooks };
 };
-export default userFetchBooks;
+
+export default useFetchBooks;
