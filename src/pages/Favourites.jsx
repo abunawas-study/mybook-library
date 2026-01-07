@@ -1,4 +1,4 @@
-import { useFavorites } from '../context/FavoritesContext';
+import { useFavorites } from '../context/FavouriteContext';
 import BookList from '../components/books/BookList';
 import { Heart } from 'lucide-react';
 import { Link } from 'react-router-dom';
