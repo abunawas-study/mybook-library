@@ -10,7 +10,6 @@ function App() {
   return (
     <FavoritesProvider>
       <Router>
-        <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/book/:isbn" element={<BookDetails />} />
