@@ -3,7 +3,7 @@ import Home from './pages/Home';
 import BookDetails from './pages/BookDetails';
 import Favourites from './pages/Favourites';
 import AI_Assistant from './pages/AI_Assistant';
-import Navbar from './components/layout/NavBar';
+import NavBar from './components/layout/NavBar';
 import { FavoritesProvider } from './context/FavouriteContext';
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/book/:isbn" element={<BookDetails />} />
+          <Route path="/book/:id" element={<BookDetails />} />
           <Route path="/favorites" element={<Favourites />} />
           <Route path="/ai-assistant" element={<AI_Assistant />} />
         </Routes>

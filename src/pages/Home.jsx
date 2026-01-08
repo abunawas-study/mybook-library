@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useState} from 'react';
+import { useCallback } from 'react';
 import NavBar from '../components/layout/NavBar';
 import SearchBar from '../components/layout/SearchBar';
 import BookList from '../components/books/BookList';
@@ -11,7 +12,7 @@ const Home = () => {
 
   const handleSearch = useCallback((searchTerm) => {
     const searchVal = searchTerm || query;
-    if (searchVal.trim().length > 2) { // Guard: Don't search for only 1 or 2 letters
+    if (searchVal.trim().length > 2) { //
       fetchBooks(searchVal);
     }
   }, [query, fetchBooks]); 
@@ -32,29 +33,31 @@ const Home = () => {
        
 
         {/* 3. Conditional Rendering: Handing the API states */}
-        {loading && (
-          <div className="flex justify-center py-12">
-            <LoadingSpinner />
-          </div>
-        )}
+      {loading && books.length === 0 && (
+  <div className="flex justify-center py-12">
+    <LoadingSpinner />
+  </div>
+)}
 
-        {error && (
-          <div className="text-center py-12">
-            <p className="text-red-500 font-medium">{error}</p>
-          </div>
-        )}
+{error && (
+  <div className="text-center py-12">
+    <p className="text-red-500 font-medium">{error}</p>
+  </div>
+)}
 
-        {/* 4. Book Grid: Use the BookList component to map through data */}
-        {!loading && !error && (
-          <BookList books={books} />
-        )}
-        
-        {/* Helper: Show a message if no search has been made yet */}
-        {!loading && !error && books.length === 0 && (
-          <div className="text-center py-12 text-gray-400">
-            Enter a title or author above to start your search.
-          </div>
-        )}
+{/* 4. Book Grid: Show books if we have them, regardless of loading state */}
+{books.length > 0 && (
+  <div className={loading ? "opacity-50 transition-opacity" : "opacity-100"}>
+    <BookList books={books} />
+  </div>
+)}
+
+{/* Helper: Show welcome message only if not loading and no books found yet */}
+{!loading && books.length === 0 && !error && (
+  <div className="text-center py-12 text-gray-400">
+    Enter a title or author above to start your search.
+  </div>
+)}
       </main>
     </div>
   );

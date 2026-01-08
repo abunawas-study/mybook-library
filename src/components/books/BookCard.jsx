@@ -3,9 +3,13 @@ import { Heart } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const BookCard = ({ book }) => {
+  if (!book) return null;
   const title = book.title || "Unknown Title";
   const author = book.author_name ? book.author_name[0] : "Unknown Author";
-  const description = book.first_sentence ? book.first_sentence[0] : "No description available.";
+  const description = 
+  book.first_sentence?.[0] || 
+  (book.subject ? `A book about ${book.subject.slice(0, 3).join(', ')}.` : null) ||
+  "Explore this classic title and its history in our library collection.";
   const coverUrl = book.cover_i 
     ? `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg` 
     : "/assets/placeholder.png";
