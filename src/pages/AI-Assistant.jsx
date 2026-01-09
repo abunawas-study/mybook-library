@@ -1,3 +1,4 @@
+import { useState } from "react";
 const AI_Assistant = () => {
   const [userInput, setUserInput] = useState("");
   const [aiResponse, setAiResponse] = useState(null); // To store librarianNote and recs
