@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import BookDetails from './pages/BookDetails';
 import Favourites from './pages/Favourites';
-import AI_Assistant from './pages/AI_Assistant';
+import AI_Assistant from './pages/AI-Assistant';
 import NavBar from './components/layout/NavBar';
 import { FavoritesProvider } from './context/FavouriteContext';
 
